@@ -1,7 +1,6 @@
 /**
- * 
  * @param {Escribir un programa que encuentre la suma de los enteros positivos pares desde N hasta
- * 2. Comprobar que si N es impar se imprima un mensaje de error.} n 
+ * 2. Comprobar que si N es impar se imprima un mensaje de error.} 
  * @returns 
  */
 
