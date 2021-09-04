@@ -3,38 +3,38 @@
  *repitan.
  */
 
-let array = []
+let arregloNumerosAleatorios = []
 
-const ArrayAleatorios = (tamano, tamanoOriginal) => {
-    if (tamano == 0) {
-        return array
+const llenarArreglo = (tamanoArreglo, tamanoOriginal) => {
+    if (tamanoArreglo == 0) {
+        return arregloNumerosAleatorios
     }
-    numero = parseInt(Math.random() * (tamanoOriginal));
+    numero = parseInt(Math.random() * (tamanoOriginal*10));
     for (let index = 0; index < tamanoOriginal; index++) {
-        if (array[index] == numero) 
+        if (arregloNumerosAleatorios[index] == numero) 
         {
-            return ArrayAleatorios(tamano,tamanoOriginal)
+            return llenarArreglo(tamanoArreglo,tamanoOriginal)
         }
     }
-    array.push(numero);
-    return ArrayAleatorios(tamano-1,tamanoOriginal)    
+    arregloNumerosAleatorios.push(numero);
+    return llenarArreglo(tamanoArreglo-1,tamanoOriginal)    
 }
 
-const imprimirArreglo = () => {
-    array.forEach(function(elemento, indice, array){
+const mostrarArregloConsola = () => {
+    arregloNumerosAleatorios.forEach(function(elemento, indice, array){
         console.log("El valor del vector en la posicion: ", indice, " es: ", elemento)
     })
 }
 
-console.log("Escribe el numero");
+console.log("Escriba el tamaño del arreglo: ");
 var stdin = process.openStdin();
 
-stdin.on("data", function (d) {
-    var num = d;
-    num = parseInt(num, 10);
+stdin.on("data", function (capturaNumero) {
+    var numero = capturaNumero;
+    numero = parseInt(numero, 10);
     console.time("TIEMPO")
-    ArrayAleatorios(num);
+    llenarArreglo(numero,numero);
     console.timeEnd("TIEMPO")
-    imprimirArreglo();
+    mostrarArregloConsola();
     process.exit(0);
 });

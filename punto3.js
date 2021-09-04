@@ -7,26 +7,23 @@
 
 const sumaEnteros = (n) => {
     if (n%2 != 0) {
-        console.log("NO SE PERMITEN NUMEROS IMPARES");
+        return console.log("ERROR. INGRESO UN NUMERO IMPAR");
     }
-    
     if (n == 0) {
         return 0;
     }
-
     return n + sumaEnteros(n-2)
 }
 
 console.log("Escribe el numero");
 var stdin = process.openStdin();
 
-stdin.on("data", function (d) {
-    var num = d;
-    num = parseInt(num, 10);
+stdin.on("data", function (capturaNumero) {
+    var numero = capturaNumero;
+    numero = parseInt(numero, 10);
     console.time("TIEMPO")
-    console.log(sumaEnteros(num));
+    console.log(sumaEnteros(numero))
     console.timeEnd("TIEMPO")
-    imprimirArreglo();
     process.exit(0);
 });
 
